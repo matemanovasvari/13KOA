@@ -4,11 +4,17 @@ const postal = document.getElementById("postal").value;
 const street = document.getElementById("street").value;
 const address = document.getElementById("address").value;
 
-const data = {name,city,postal,street,address};
+const data = {
+    name,
+    city,
+    postal,
+    street,
+    address
+};
+
+console.log(data);
 
 const btn = document.getElementById("add");
-
-localStorage.clear();
 
 btn.addEventListener("click", () => {
     console.log(data);
