@@ -1,0 +1,43 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body{
+    background-color: black;
+}
+
+#random{
+    margin-top: 15px;
+    border-radius: 15px;
+    border: white solid 2px;
+    color: white;
+    background: grey;
+    transition: all .5s;
+    text-align: center;
+    font-size: medium;
+    padding: 10px;
+}
+
+#random:hover{
+    color: black;
+    background: white;
+}
+
+nav{
+    display: flex;
+    height: 100px;
+}
+
+header{
+    background: linear-gradient(grey, #000)
+}
+
+#fromId{
+    width: 25px;
+    height: 25px;
+    border-radius: 100%;
+    box-shadow: none;
+    border: none;
+}
