@@ -9,6 +9,5 @@ void main(){
 
     bool boolResult = !boolValue;
 
-    //intResult printing
-    print("The value of intResult is $intResult");
+    print("The value of intResult is $intResult \nThe value of doubleResult is $doubleResult \nThe value of boolResult is $boolResult \nThe value of strValue is $strValue");
 }
