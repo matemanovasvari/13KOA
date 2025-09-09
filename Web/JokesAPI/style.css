@@ -9,7 +9,6 @@ body{
 }
 
 #random{
-    margin-top: 15px;
     border-radius: 15px;
     border: white solid 2px;
     color: white;
@@ -31,7 +30,7 @@ nav{
 }
 
 header{
-    background: linear-gradient(grey, #000)
+    background: rgb(0, 0, 48)
 }
 
 #fromId{
@@ -40,4 +39,25 @@ header{
     border-radius: 100%;
     box-shadow: none;
     border: none;
+    margin-left: 5px;
+}
+
+#fromRandom{
+    margin-left: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#getById{
+    margin-left: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    color: white;
+}
+
+#getById>label{
+    margin-right: 5px;
 }
