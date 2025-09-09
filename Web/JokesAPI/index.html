@@ -14,14 +14,24 @@
             </div>
 
             <div id="getById">
-                <label for="">Joke from id</label>
-                <input type="number">
-                <button id="fromId">
-                    <div></div>
-                </button>
+                <label for="">Id</label>
+                <input type="number" id="id">
+                <button id="fromId">Search</button>
+            </div>
+
+            <div id="getByCategory">
+                <label for="">Category</label>
+                <select name="" id="category">
+                    <option value="programming">Programming</option>
+                    <option value="knock-knock">Knock-knock</option>
+                    <option value="general">General</option>
+                </select>
+                <button id="fromCategory">Search</button>
             </div>
         </nav>
     </header>
+
+    <div id="container"></div>
 </body>
 <script src="script.js"></script>
 </html>
