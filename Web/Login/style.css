@@ -69,8 +69,17 @@ button:disabled {
     align-items: center;
     flex-direction: column;
     border: 2px solid rgba(255, 255, 255, 0.4);
+    transform: scale(0);
+    opacity: 0;
     transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
 }
+
+.login-box.active {
+    display: flex;
+    transform: scale(1);
+    opacity: 1;
+}
+
 
 h2{
     font-size: 2em;
