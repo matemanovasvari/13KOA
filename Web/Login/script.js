@@ -8,13 +8,21 @@ window.addEventListener("DOMContentLoaded", () => {
   const loggedInUser = localStorage.getItem("loggedInUser");
   if (loggedInUser) {
     isUserLoggedIn = true;
-    updateUIForLoggedInUser(JSON.parse(loggedInUser));
+    document.getElementById("login").classList.remove("active");
+    document.getElementById("logoutBtn").style.display = "block";
+  } else {
+    document.getElementById("login").classList.add("active");
+    document.getElementById("logoutBtn").style.display = "none";
   }
-  document.getElementById("login").classList.add("active");
 });
 
-if(isUserLoggedIn == false){
+if (!isUserLoggedIn) {
   document.getElementById("logoutBtn").style.display = "none";
+}
+
+if (isUserLoggedIn) {
+  document.getElementById("logoutBtn").style.display = "block";
+  document.getElementById("login").classList.remove("active");
 }
 
 openRegisterButton.addEventListener("click", () => {
@@ -25,92 +33,78 @@ openRegisterButton.addEventListener("click", () => {
 closeRegisterButton.addEventListener("click", () => {
   document.getElementById("register").classList.remove("active");
   document.getElementById("login").classList.add("active");
-  
+
   document.getElementById("emailInput").value = "";
-  document.getElementById("usernameInput").value = "";
-  document.getElementById("passwordInput").value = "";
+  document.getElementById("passwordLoginInput").value = "";
 });
 
-const registerBtn = document.getElementById("registerBtn");
-
-document.getElementById("register-form").addEventListener("submit", async function (e) {
+document.getElementById("register-form").addEventListener("submit", function (e) {
   e.preventDefault();
-  document.querySelectorAll(".error-message").forEach((el) => (el.textContent = ""));
-  
-  const email = document.getElementById("emailInput").value.trim();
-  const username = document.getElementById("usernameInput").value.trim();
+  const email = document.getElementById("registerEmailInput").value.trim();
   const password = document.getElementById("passwordInput").value.trim();
-  
-  const data = {
-    email,
-    username,
-    password
-  };
-  
-  try {
-    const res = await fetch("/users", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(data)
-    });
-    
-    if (!res.ok) {
-      const errorData = await res.json();
-      alert(errorData.message);
-      return;
-    }
-    alert("Registration successful!");
+  const passwordAgain = document.getElementById("passwordAgainInput").value.trim();
+
+  const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  const passwordRegex = /^(?=.*[A-Z])(?=.*[a-z])(?=.*[^A-Za-z0-9]).{8,}$/;
+
+  let users = JSON.parse(localStorage.getItem("users")) || [];
+
+  const existingUser = users.find(user => user.email === email);
+
+  if (!regex.test(email)) {
+    document.getElementById("errorRegister").textContent = "Email is in incorrect format!";
+  }
+  else if (!passwordRegex.test(password)) {
+    document.getElementById("errorRegister").textContent = "Password is in incorrect format!";
+  }
+  else if (password !== passwordAgain) {
+    document.getElementById("errorRegister").textContent = "Passwords don't match!";
+  }
+  else if (existingUser) {
+    document.getElementById("errorRegister").textContent = "A user with this email already exists!";
+  }
+  else {
+    const newUser = { email, password };
+    users.push(newUser);
+    localStorage.setItem("users", JSON.stringify(users));
+
     document.getElementById("register").classList.remove("active");
     document.getElementById("login").classList.add("active");
-    this.reset();
-  } catch (err) {
-    console.log(err);
+    document.getElementById("register-form").reset();
+    document.getElementById("errorRegister").textContent = "";
+
+    console.log("Users after register:", JSON.parse(localStorage.getItem("users")));
   }
 });
 
-document.getElementById("login-form")
-.addEventListener("submit", async (e) => {
+document.getElementById("login-form").addEventListener("submit", async (e) => {
   e.preventDefault();
-  
-  const username = document.getElementById("usernameLoginInput").value.trim();
+
+  const email = document.getElementById("emailInput").value.trim();
   const password = document.getElementById("passwordLoginInput").value.trim();
-  
-  if (!username || !password) {
-    alert("Please enter username and password.");
-    return;
+
+  let users = JSON.parse(localStorage.getItem("users")) || [];
+
+  const user = users.find(u => u.email === email);
+
+  if (user && user.password === password) {
+    isUserLoggedIn = true;
+    localStorage.setItem("loggedInUser", JSON.stringify(user)); 
+    document.getElementById("login-form").reset();
+    document.getElementById("login").classList.remove("active");
+    document.getElementById("logoutBtn").style.display = "block";
+    document.getElementById("errorLogin").textContent = "";
   }
-  
-  try {
-    const res = await fetch("/users");
-    if (!res.ok) {
-      alert("Failed to fetch users for login.");
-      return;
-    }
-    
-    const users = await res.json();
-    const matchedUser = users.find(
-      (user) => user.username == username && user.password == password
-    );
-    
-    if (matchedUser) {
-      isUserLoggedIn = true;
-      
-      localStorage.setItem("loggedInUser", JSON.stringify(matchedUser));
-      updateUIForLoggedInUser(matchedUser);
-      
-      document.getElementById("login-form").reset();
-    } else {
-      alert("Invalid username or password.");
-    }
-  } catch (err) {
-    console.error(err);
-    alert("Error occurred during login.");
+  else if (!user) {
+    document.getElementById("errorLogin").textContent = "Incorrect email address!";
+  }
+  else if (user.password !== password) {
+    document.getElementById("errorLogin").textContent = "Incorrect password!";
   }
 });
-
 
 document.getElementById("logoutBtn").addEventListener("click", () => {
   localStorage.removeItem("loggedInUser");
+  document.getElementById("login").classList.add("active");
   document.getElementById("logoutBtn").style.display = "none";
-  document.getElementById("openLoginBtn").style.display = "inline-block";
 });

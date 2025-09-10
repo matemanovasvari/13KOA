@@ -29,6 +29,9 @@
                 <label>Password</label>
             </div>
             <button type="submit" id="loginBtn">Login</button>
+            <div id="errorLogin">
+
+            </div>
         </form>
         <div class="register-link">
             <p>Don't have an account?</p> 
@@ -44,15 +47,8 @@
                 <span class="icon">
                     <ion-icon name="mail"></ion-icon>
                 </span>
-                <input type="email" id="emailInput" required>
+                <input type="email" id="registerEmailInput" required>
                 <label>Email</label>
-            </div>
-            <div class="input-box">
-                <span class="icon">
-                    <ion-icon name="person-circle"></ion-icon>
-                </span>
-                <input type="text" id="usernameInput" required>
-                <label>Username</label>
             </div>
             <div class="input-box">
                 <span class="icon">
@@ -61,7 +57,17 @@
                 <input type="password" id="passwordInput" required>
                 <label>Password</label>
             </div>
+            <div class="input-box">
+                <span class="icon">
+                    <ion-icon name="lock-closed"></ion-icon>
+                </span>
+                <input type="password" id="passwordAgainInput" required>
+                <label>Password again</label>
+            </div>
             <button type="submit" id="registerBtn">Register</button>
+            <div id="errorRegister">
+                
+            </div>
         </form>
     </div>
   

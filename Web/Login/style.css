@@ -3,6 +3,7 @@
     padding: 0;
     color: white;
     box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 body {
@@ -10,34 +11,33 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background: rgb(23, 54, 94);
+    background: 
+    linear-gradient(135deg, #4c3a33, #d5f1e0),
+    linear-gradient(45deg, #d6a8e9, #3e6f8b),
+    radial-gradient(circle at 30% 30%, rgba(243, 126, 126, 0.7), transparent 40%),
+    radial-gradient(circle at 70% 70%, rgba(20, 20, 240, 0.7), transparent 60%);
+    background-blend-mode: overlay;
+    background-size: cover;
     color: #fff;
     height: 100vh;
-    background-image: url(bg.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
 }
   
-header{
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    padding: 20px 100px;
-}
-
-nav{
-
-}
-  
-.error-message {
+#errorLogin{
     color: red;
     font-size: 0.9em;
-    margin-bottom: 10px;
+    margin: 10px;
+    text-align: center;
+}  
+
+#errorRegister{
+    color: red;
+    font-size: 0.9em;
+    margin: 10px;
+    text-align: center;
 }
 
 button {
-    background: #4f46e5;
+    background: linear-gradient(90deg,rgba(243, 126, 126, 0.2),rgba(20, 20, 240, 0.2));
     color: white;
     border: none;
     padding: 0.8rem 1.5rem;
@@ -48,7 +48,7 @@ button {
 }
   
 button:hover {
-    background: #635df7;
+    background: linear-gradient(45deg,rgba(243, 126, 126, 0.2),rgba(20, 20, 240, 0.2));
 }
 
 button:disabled {
