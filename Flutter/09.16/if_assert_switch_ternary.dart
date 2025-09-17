@@ -46,4 +46,23 @@ void main(){
             print("Érvénytelen osztályzat!");
         break;
     }
+
+    print("Enter a number:");
+    String input1 = stdin.readLineSync()!;
+    int number1 = int.parse(input1);
+
+    print("Enter a 2nd number:");
+    String input2 = stdin.readLineSync()!;
+    int number2 = int.parse(input2);
+
+    int result = 0;
+
+    if(number1 > number2){
+        result = number1 - number2;
+        print("$number1 is bigger than $number2, difference is $result");
+    }
+    else if(number2 > number1){
+        result = number2 - number1;
+        print("$number2 is bigger than $number1, difference is $result");
+    }
 }
