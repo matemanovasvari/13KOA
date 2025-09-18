@@ -41,6 +41,43 @@ app.post("/users", (req, res) => {
     res.status(201).json(user);
 });
 
+app.put("/users/:id", (req, res) => {
+    const id = +req.params.id;
+
+    const user = users.find(x => x.id === id);
+    if(!user){
+        return res.status(404).json({message:"User not found!"});
+    }
+
+    const {name, age} = req.body;
+    if(!name || !age){
+        return res.status(400).json({message:"Invalid credentials!"});
+    }
+
+    const index = users.indexOf(user);
+    user = {id: user.id, name, age}
+    users[index] = user;
+    res.status(200).json(user);
+});
+
+app.patch("/users/:id", (req, res) => {
+    const id = +req.params.id;
+
+    const user = users.find(x => x.id === id);
+    if(!user){
+        return res.status(404).json({message:"User not found!"});
+    }
+
+    const {name, age} = req.body;
+    const index = users.indexOf(user);
+    user = {
+        id: user.id, 
+        name: name || user.name, 
+        age: age || user.age}
+    users[index] = user;
+    res.status(200).json(user);
+});
+
 app.delete("/users/:id", (req, res) =>{
     const id = +req.params.id;
 
