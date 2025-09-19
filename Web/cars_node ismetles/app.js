@@ -7,10 +7,10 @@ app.use(express.json());
 
 const cars = [
     {id: 1, brand: "Toyota", model: "Corolla"},
-    {id: 1, brand: "Toyota", model: "Yaris"},
-    {id: 1, brand: "Suyuki", model: "Swift"},
-    {id: 1, brand: "Mayda", model: "Miata"},
-    {id: 1, brand: "Mitsubishi", model: "L300"},
+    {id: 2, brand: "Toyota", model: "Yaris"},
+    {id: 3, brand: "Suyuki", model: "Swift"},
+    {id: 4, brand: "Mayda", model: "Miata"},
+    {id: 5, brand: "Mitsubishi", model: "L300"},
 ]
 
 app.get("/", (req, res) => {
