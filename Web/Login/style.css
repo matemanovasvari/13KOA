@@ -58,10 +58,9 @@ button:disabled {
 
 .login-box{
     position: absolute;
-    width: 350px;
+    width: 335px;
     height: 450px;
     background: transparent;
-    position: absolute;
     backdrop-filter: blur(15px);
     border-radius: 25px;
     display: flex;
@@ -80,6 +79,14 @@ button:disabled {
     opacity: 1;
 }
 
+#login-form h2{
+    transition: .7s all;
+    cursor: default;
+}
+
+#login-form h2:hover{
+    color: #d6a8e9;
+}
 
 h2{
     font-size: 2em;
@@ -135,6 +142,11 @@ h2{
     font-size: 1.2em;
     font-weight: 500;
     margin: 0;
+    transition: .7s all;
+}
+
+#loginBtn:hover{
+    background: linear-gradient(90deg, rgba(144, 99, 187, 0.7), rgba(90, 95, 168, 0.3));
 }
 
 .register-link{
@@ -144,25 +156,10 @@ h2{
     margin-top: 15px;
 }
 
-#close_login{
-    width: 50px;
-    height: 50px;
-    text-align: center;
-    margin: 0;
-    right: 0;
-    top: 0;
-    background-color: red;
-    position: absolute;
-    border-radius: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
 .register-box{
     position: absolute;
-    width: 400px;
-    height: 500px;
+    width: 335px;
+    height: 450px;
     background: transparent;
     backdrop-filter: blur(15px);
     border-radius: 25px;
@@ -170,7 +167,6 @@ h2{
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    position: absolute;
     border: 2px solid rgba(255, 255, 255, 0.4);
     transform: scale(0);
     opacity: 0;
@@ -190,12 +186,17 @@ h2{
     margin: 0;
     right: 0;
     top: 0;
-    background-color: red;
+    background: radial-gradient(#f13dd3,rgba(241, 29, 29, 0.7));
+    transition: .5s all;
     position: absolute;
-    border-radius: 100%;
+    border-radius: 25px;
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+#close_register:hover{
+    background: #b1319b;
 }
 
 #registerBtn{
