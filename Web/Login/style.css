@@ -110,6 +110,7 @@ h2{
 }
 
 .input-box input:focus~label,
+.input-box input:hover~label,
 .input-box input:valid~label{
     top: -5px;
 }
